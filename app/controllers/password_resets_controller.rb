@@ -1,5 +1,4 @@
 class PasswordResetsController < ApplicationController
-
     before_action :get_user, only: [:edit, :update]
     before_action :valid_user, only: [:edit, :update]
     before_action :check_expiration, only: [:edit, :update] #case 1
@@ -10,11 +9,8 @@ class PasswordResetsController < ApplicationController
         @user = User.find_by(email: params[:password_reset][:email].downcase)
         if @user
             @user.create_reset_digest
-            
             # binding.pry
-            
             @user.send_password_reset_email
-
             flash[:info] = "Email sent with password reset instructions"
             redirect_to root_url
         else
@@ -29,7 +25,7 @@ class PasswordResetsController < ApplicationController
     
     def update
         
-        binding.pry
+        # binding.pry
         
         if params[:user][:password].empty?
             @user.errors.add(:password, "can't be empty")

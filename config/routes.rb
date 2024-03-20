@@ -25,4 +25,16 @@ Rails.application.routes.draw do
   get "/password_resets/:id/edit", to: "password_resets#edit", as: "edit_password_reset"
   patch "/password_resets/:id", to: "password_resets#update", as: "password_reset"
 
+
+  # post "/microposts", to:"microposts#create"
+  # delete "/microposts/:id", to:"microposts#destroy"
+  # routes for showing follwers and following
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
+  resources :microposts, only: [:create, :destroy]
+  resources :relationships, only: [:create, :destroy]
+  get '/microposts', to: 'static_pages#home'
 end

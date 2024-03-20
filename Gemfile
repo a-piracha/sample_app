@@ -57,7 +57,8 @@ gem "faker"
 gem "will_paginate",      "3.3.1"
 gem "bootstrap-will_paginate",    "1.0.0"
 gem 'letter_opener'
-
+gem "active_storage_validations", "0.9.8"
+gem "image_processing", "1.12.2"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
